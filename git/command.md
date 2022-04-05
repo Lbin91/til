@@ -67,6 +67,12 @@ $ git branch -d branch_name
 원격 브랜치 삭제
 $ git push remote_repo --delete branch_name
 
+현재 코드를 특정 branch에 rebase하기
+$ git rebase target_branch
+
+원격 저장소에 force push 하기(주로 rebase 이후에 한다)
+$ git push -f remote_repo remote_branch
+
 커밋 안한 변경사항 임시저장(stash)
 $ git stash
 $ git stath save "stash_memo"
