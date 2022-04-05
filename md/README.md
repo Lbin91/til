@@ -1,5 +1,5 @@
 # 마크다운이란 무엇인가?
-## Bongjin lee, iOS developer
+**Bongjin lee, iOS Dev**
 
 ## 시작하며...
 다양한 깃허브 페이지를 돌아다니며 README.md 파일에 작성된 설명을 읽어왔습니다.
