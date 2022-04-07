@@ -64,6 +64,12 @@ $ git branch -m old_branch_name new_branch_name
 로컬 브랜치 삭제
 $ git branch -d branch_name
 
+브랜치 전환
+$ git checkout branch_name
+
+브랜치 생성하면서 전환
+$ git checkout -b branch_name
+
 원격 브랜치 삭제
 $ git push remote_repo --delete branch_name
 
