@@ -31,5 +31,25 @@ $ rmdir delete_target_folder
 remove의 약자로 파일을 삭제한다. 폴더는 rmdir로 지운다. 단 -r 옵션을 사용시 폴더도 지워지며 **파일을 포함한 폴더**도 삭제 가능하다.
 ```
 $ rm delete_target_file
+$ rm -r delete_target_file
 ```
+
+**cat**
+concatenate의 약자로 파일의 내용을 출력한다.
+```
+$ cat file_name
+```
+
+**touch, echo**
+파일을 생성한다. 단 echo는 파일의 내용까지 입력하면서 생성이 가능하다
+```
+$ touch file_name
+$ echo "file_content" > file_name
+```
+echo의 경우 아래의 실제 결과를 보면 이해가 쉽다.
+
+```
+$ echo "test text" > text.txt
+$ cat text.txt
+test text
 ```
