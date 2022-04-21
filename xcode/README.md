@@ -19,3 +19,18 @@
 이 경우에 !로 객체 선언 시 오류가 발생 할 수 있다.
 
 동일하게 상속받아서 객체를 연결해 줄 수 있다면 !로 강제로 선언해 주어도 좋지만 그렇지 않다면 옵셔널로 받는것이 좋다.
+
+## iOS 앱 스크린 안꺼지도록 하기
+
+Objective-C
+```
+[[UIApplication sharedApplication] setIdleTimerDisabled: YES];
+```
+
+Swift
+```
+UIApplication.shared.isIdleTimerDisabled = true
+```
+
+공식 문서에 따르면 가급적 제한적으로 사용하기를 권고 하고 있으므로
+필요한 화면의 ```viewWillApear```에서 세팅하고 ```viewWillDisappear```에서 꺼주는것이 좋다.
