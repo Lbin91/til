@@ -272,7 +272,8 @@ numbers.send(completion: .finished)
 4
 Completed with: finished
 ```
-완성된 코드는 다음과 같습니다:
+
+임의로 만든 완성된 코드는 다음과 같습니다:
 ```
 example(of: "last(where:)") {
   let numbers = PassthroughSubject<Int, Never>()
@@ -296,6 +297,8 @@ example(of: "last(where:)") {
 이 범주에 속하는 세 가지 연산자가 있으며, 가장 간단한 것부터 시작하여 배우게 될 것입니다 — dropFirst.
 dropFirst 연산자는 count 매개변수를 받아들이며, 생략된 경우 기본값은 1입니다. 퍼블리셔가 방출하는 처음 count 개의 값을 무시하고, count 값이 방출된 후에야 값을 통과시킵니다.
 
+![dropFirst](assets/dropFirst.png)
+
 플레이그라운드에 다음 코드를 추가하여 dropFirst 연산자가 어떻게 작동하는지 확인해 보세요:
 ```
 example(of: "dropFirst") {
@@ -314,6 +317,7 @@ example(of: "dropFirst") {
 1부터 10까지 10개의 숫자를 방출하는 퍼블리셔를 생성합니다.
 dropFirst(8)을 사용하여 처음 8개의 값을 무시하고, 9와 10만 출력합니다.
 플레이그라운드를 실행하면 다음과 같은 출력을 확인할 수 있습니다:
+
 ```
 ——— Example of: dropFirst ———
 9
@@ -323,13 +327,11 @@ Completed with: finished
 
 간단하죠? 종종 가장 유용한 연산자는 이런 간단한 것들입니다!
 
-# Dropping values
-
 다음 값 드롭 연산자는 drop(while:)입니다. 이 연산자는 조건 클로저를 받아, 조건이 처음으로 충족될 때까지 퍼블리셔가 방출하는 모든 값을 무시합니다. 조건이 충족되는 즉시 값들이 연산자를 통해 흐르기 시작합니다.
 
 플레이그라운드에 다음 예제를 추가하여 drop(while:) 연산자가 어떻게 작동하는지 확인해 보세요:
 
-![dripFirst](assets/dropFirst.png)
+![dripwhile](assets/dropwhile.png)
 
 ```
 example(of: "drop(while:)") {
@@ -365,7 +367,7 @@ drop(while:) 연산자를 사용하여 값이 5의 배수가 아닐 동안 방�
 두 번째, 그리고 더 중요한 차이점은 filter는 상류 퍼블리셔가 발행한 모든 값에 대해 조건을 평가하는 것을 멈추지 않는다는 것입니다. filter의 조건이 참으로 평가된 후에도 이후 값들은 여전히 "질문"을 받고, 클로저는 "이 값을 통과시킬 것인가?"라는 질문에 답해야 합니다.
 
 맞습니다. drop(while:)의 조건 클로저는 조건이 충족된 후에는 다시 실행되지 않습니다. 이를 확인하려면 다음 줄을 교체하세요:
-![dropWhile](assets/dropWhile.png)
+
 ```
 .drop(while: { $0 % 5 != 0 })
 ```
