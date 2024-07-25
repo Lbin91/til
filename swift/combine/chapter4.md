@@ -562,3 +562,47 @@ example(of: "prefix(untilOutputFrom:)") {
 2
 Completed with: finished
 ```
+
+
+# Challenge: Filter all the things
+
+1부터 100까지의 숫자를 방출하는 퍼블리셔를 생성하고, 필터링 연산자를 사용하여 다음을 수행하세요:
+
+상류 퍼블리셔가 방출하는 처음 50개의 값을 건너뛰세요.
+그 후의 20개의 값을 받으세요.
+짝수만 받으세요.
+
+
+```
+example(of: "Filter all the things") {
+  // 1
+  let numbers = (1...100).publisher
+  
+  // 2
+  numbers
+    .dropFirst(50)                  // 처음 50개의 값을 건너뜁니다.
+    .prefix(20)                     // 다음 20개의 값을 받습니다.
+    .filter { $0 % 2 == 0 }         // 짝수만 받습니다.
+    .sink(receiveCompletion: { print("Completed with: \($0)") },
+          receiveValue: { print($0) })
+    .store(in: &subscriptions)
+}
+
+```
+
+결과값은 다음과 같습니다.
+
+```
+——— Example of: Filter all the things ———
+52
+54
+56
+58
+60
+62
+64
+66
+68
+70
+Completed with: finished
+```
