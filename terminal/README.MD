@@ -53,3 +53,13 @@ $ echo "test text" > text.txt
 $ cat text.txt
 test text
 ```
+
+**history**
+터미널에서 입력한 명령어 기록을 불러온다.
+```
+$ history
+$ history 20 // 최근 20개의 명령어를 불러온다
+!30 // 30번 명령어를 재 실행한다.
+!! // 가장 최근 실행한 명령어를 재 실행한다.
+!git // 최근 명령어 중 git 으로 시작하는 명령어를 재 실행한다.
+```
