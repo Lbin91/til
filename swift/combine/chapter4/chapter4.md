@@ -331,7 +331,7 @@ Completed with: finished
 
 플레이그라운드에 다음 예제를 추가하여 drop(while:) 연산자가 어떻게 작동하는지 확인해 보세요:
 
-![dripwhile](assets/dropwhile.png)
+![dropwhile](assets/dropwhile.png)
 
 ```
 example(of: "drop(while:)") {
