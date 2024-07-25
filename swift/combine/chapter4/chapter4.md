@@ -11,7 +11,7 @@
 
 이 첫 번째 섹션에서는 필터링의 기본 사항에 대해 다룹니다. 즉, 값의 퍼블리셔를 소비하고 조건에 따라 어떤 값을 소비자에게 전달할지 결정하는 것입니다. 이를 수행하는 가장 쉬운 방법은 이름에 걸맞은 연산자인 filter를 사용하는 것입니다. 이 연산자는 Bool 값을 반환하는 클로저를 받아서 제공된 조건에 맞는 값만 전달합니다.
 
-![isMultiple](isMultiple.png)
+![isMultiple](assets/isMultiple.png)
 
 ```
 example(of: "filter") {
@@ -42,7 +42,7 @@ filter 연산자를 사용하여 조건을 전달합니다. 여기서 3의 배�
 
 Combine은 이 작업을 위한 완벽한 연산자를 제공합니다: removeDuplicates
 
-![removeDuplicates](removeDuplicates.png)
+![removeDuplicates](assets/removeDuplicates.png)
 
 이 연산자에 아무런 인수를 제공할 필요가 없다는 점을 주목하세요! removeDuplicates는 String을 포함하여 Equatable을 준수하는 모든 값에 대해 자동으로 작동합니다.
 
@@ -85,7 +85,7 @@ mister
 
 만약 Swift 표준 라이브러리의 Sequence에서 이 작업을 수행하는 매우 잘 알려진 메서드인 compactMap이 생각난다면, 좋은 소식입니다 - 동일한 이름의 연산자도 있습니다!
 
-![compactMap](compactMap.png)
+![compactMap](assets/compactMap.png)
 
 ```
 example(of: "compactMap") {
@@ -121,7 +121,7 @@ compactMap을 사용하여 각 개별 문자열에서 Float를 초기화하려�
 
 좋아요, 잠시 이 모든 값에서 벗어나 봅시다... 사실, 그 값들이 뭐가 중요하겠어요, 그렇죠? 때때로 여러분이 알고 싶은 것은 퍼블리셔가 값을 방출하는 것을 완료했다는 것뿐이고, 실제 값은 무시해도 될 때가 있습니다. 이러한 상황이 발생할 때는 ignoreOutput 연산자를 사용할 수 있습니다:
 
-![ignoreOutput](ignoreOutput.png)
+![ignoreOutput](assets/ignoreOutput.png)
 
 위 다이어그램에서 보여주듯이, 방출되는 값이 무엇이든, 얼마나 많이 방출되든 상관없이 모두 무시됩니다. 오직 완료 이벤트만 소비자에게 전달됩니다.
 
@@ -153,7 +153,7 @@ Completed with: finished
 이번 섹션에서는 Swift 표준 라이브러리에서 유래된 두 가지 연산자인 first(where:)와 last(where:)에 대해 배울 것입니다. 이름에서 알 수 있듯이, 이 연산자들은 제공된 조건과 일치하는 첫 번째 또는 마지막 값을 찾아서 방출하는 데 사용됩니다.
 
 몇 가지 예제를 살펴볼 시간입니다. 먼저, first(where:)부터 시작해보겠습니다.
-![firstWhere](firstWhere.png)
+![firstWhere](assets/firstWhere.png)
 
 이 연산자는 게으르다는 점에서 흥미롭습니다. 즉, 제공된 조건과 일치하는 값을 찾을 때까지 필요한 만큼의 값만 취합니다. 일치하는 값을 찾으면 즉시 구독을 취소하고 완료합니다.
 이 코드가 어떻게 작동하는지 보려면 다음 코드를 플레이그라운드에 추가하세요
@@ -210,7 +210,7 @@ Completed with: finished
 
 이제 이 연산자의 반대인 last(where:)로 넘어가겠습니다. 이 연산자는 제공된 조건과 일치하는 마지막 값을 찾는 역할을 합니다.
 
-![lastWhere](lastWhere.png)
+![lastWhere](assets/lastWhere.png)
 
 first(where:)와는 달리, 이 연산자는 제공된 조건과 일치하는 값을 찾기 위해 모든 값이 방출될 때까지 기다려야 하므로 탐욕적(greedy)입니다. 따라서 상류 퍼블리셔는 어떤 시점에서 완료되어야 합니다.
 플레이그라운드에 다음 코드를 추가하세요:
@@ -329,7 +329,7 @@ Completed with: finished
 
 플레이그라운드에 다음 예제를 추가하여 drop(while:) 연산자가 어떻게 작동하는지 확인해 보세요:
 
-![dripFirst](dropFirst.png)
+![dripFirst](assets/dropFirst.png)
 
 ```
 example(of: "drop(while:)") {
@@ -365,7 +365,7 @@ drop(while:) 연산자를 사용하여 값이 5의 배수가 아닐 동안 방�
 두 번째, 그리고 더 중요한 차이점은 filter는 상류 퍼블리셔가 발행한 모든 값에 대해 조건을 평가하는 것을 멈추지 않는다는 것입니다. filter의 조건이 참으로 평가된 후에도 이후 값들은 여전히 "질문"을 받고, 클로저는 "이 값을 통과시킬 것인가?"라는 질문에 답해야 합니다.
 
 맞습니다. drop(while:)의 조건 클로저는 조건이 충족된 후에는 다시 실행되지 않습니다. 이를 확인하려면 다음 줄을 교체하세요:
-![dropWhile](dropWhile.png)
+![dropWhile](assets/dropWhile.png)
 ```
 .drop(while: { $0 % 5 != 0 })
 ```
@@ -400,7 +400,7 @@ x
 다음과 같은 시나리오를 상상해보세요. 사용자가 버튼을 탭하고 있지만, isReady 퍼블리셔가 어떤 결과를 방출할 때까지 모든 탭을 무시하고 싶습니다. 이 연산자는 이러한 조건에 완벽하게 맞습니다.
 이 연산자는 두 번째 퍼블리셔가 값을 방출하기 시작할 때까지 첫 번째 퍼블리셔가 방출하는 모든 값을 건너뛰며, 이들 사이에 관계를 만듭니다.
 
-![dropUntilOutputFrom](dropUntilOutputFrom.png)
+![dropUntilOutputFrom](assets/dropUntilOutputFrom.png)
 
 플레이그라운드에 다음 예제를 추가하여 drop(untilOutputFrom:) 연산자가 어떻게 작동하는지 확인해 보세요:
 
@@ -458,7 +458,7 @@ prefix 연산자 군은 drop 연산자 군과 유사하며, prefix(_:), prefix(w
 
 이제, 이 장의 마지막 연산자 세트인 prefix 연산자에 대해 알아볼 시간입니다. 먼저 prefix(_:)부터 시작해 보겠습니다.
 
-![prefix](prefix.png)
+![prefix](assets/prefix.png)
 
 플레이그라운드에 다음 예제를 추가하여 prefix(_:) 연산자가 어떻게 작동하는지 확인해 보세요:
 ```
@@ -489,7 +489,7 @@ Completed with: finished
 
 다음으로 prefix(while:)를 살펴보겠습니다. 이 연산자는 조건 클로저를 받아 클로저의 결과가 true인 동안 상류 퍼블리셔의 값을 통과시킵니다. 결과가 false가 되면 퍼블리셔는 완료됩니다.
 
-![prefixWhile](prefixWhile.png)
+![prefixWhile](assets/prefixWhile.png)
 
 플레이그라운드에 다음 예제를 추가하여 prefix(while:) 연산자가 어떻게 작동하는지 확인해 보세요:
 
@@ -522,7 +522,7 @@ Completed with: finished
 
 사용자가 버튼을 두 번만 탭할 수 있는 시나리오를 상상해 보세요. 두 번의 탭이 발생하자마자 버튼에 대한 추가 탭 이벤트는 무시되어야 합니다.
 
-![prefixUntilOutputFrom](prefixUntilOutputFrom.png)
+![prefixUntilOutputFrom](assets/prefixUntilOutputFrom.png)
 
 플레이그라운드에 다음 예제를 추가하여 prefix(untilOutputFrom:) 연산자가 어떻게 작동하는지 확인해 보세요:
 
