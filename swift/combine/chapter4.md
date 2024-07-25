@@ -42,6 +42,8 @@ filter 연산자를 사용하여 조건을 전달합니다. 여기서 3의 배�
 
 Combine은 이 작업을 위한 완벽한 연산자를 제공합니다: removeDuplicates
 
+![removeDuplicates](removeDuplicates.png)
+
 이 연산자에 아무런 인수를 제공할 필요가 없다는 점을 주목하세요! removeDuplicates는 String을 포함하여 Equatable을 준수하는 모든 값에 대해 자동으로 작동합니다.
 
 ```
@@ -82,6 +84,9 @@ mister
 자주 Optional 값을 방출하는 퍼블리셔를 다루게 될 것입니다. 또는 더 일반적으로, 어떤 작업을 수행하다가 nil을 반환할 수 있는 상황이 있을 겁니다. 하지만 그 모든 nil을 처리하고 싶지는 않을 것입니다, 그렇죠?!
 
 만약 Swift 표준 라이브러리의 Sequence에서 이 작업을 수행하는 매우 잘 알려진 메서드인 compactMap이 생각난다면, 좋은 소식입니다 - 동일한 이름의 연산자도 있습니다!
+
+![compactMap](compactMap.png)
+
 ```
 example(of: "compactMap") {
   // 1
