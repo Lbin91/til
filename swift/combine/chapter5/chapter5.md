@@ -67,7 +67,9 @@ prepend를 사용하여 퍼블리셔의 자체 값 앞에 숫자 1과 2를 추�
 
 ### prepend(Sequence)
 이 prepend 변형은 이전 것과 비슷하지만, 입력으로 Sequence를 준수하는 객체를 받는다는 점이 다릅니다. 예를 들어, Array나 Set을 받을 수 있습니다.
+
 ![prepend_sequence](assets/prepend_sequence.png)
+
 이 연산자를 실험해보기 위해 플레이그라운드에 다음 코드를 추가하세요:
 ```
 example(of: "prepend(Sequence)") {
@@ -130,7 +132,9 @@ example(of: "prepend(Sequence)") {
 보시다시피, 이전 출력 앞에 세 개의 새로운 값이 퍼블리셔에 추가되었습니다 - 6, 8, 10이며, 이는 6에서 11 사이를 2씩 보폭으로 이동한 결과입니다.
 ### prepend(Publisher)
 이전의 두 연산자는 기존 퍼블리셔에 값 목록을 추가했습니다. 하지만 두 개의 서로 다른 퍼블리셔가 있고 그 값들을 함께 연결하고 싶다면 어떻게 할까요? prepend(Publisher)를 사용하여 원래 퍼블리셔의 값 앞에 두 번째 퍼블리셔에서 방출된 값을 추가할 수 있습니다.
+
 ![prepend_publisher](assets/prepend_publisher.png)
+
 위의 예제를 시도해보려면 플레이그라운드에 다음을 추가하세요:
 ```
 example(of: "prepend(Publisher)") {
@@ -217,7 +221,9 @@ Combine은 이제 publisher2가 작업을 완료했기 때문에 publisher1에�
 다음 연산자 세트는 퍼블리셔가 방출한 이벤트를 다른 값들과 연결하는 작업을 다룹니다. 하지만 이 경우에는 prepend가 아닌 append를 사용하게 됩니다. append(Output...), append(Sequence), append(Publisher)를 사용합니다. 이 연산자들은 prepend 연산자와 유사한 방식으로 작동합니다.
 ### append(Output...)
 append(Output...)는 prepend와 유사하게 작동합니다: 타입 Output의 가변 인자 리스트를 받아 원래 퍼블리셔가 .finished 이벤트로 완료된 후에 이 항목들을 추가합니다.
+
 ![append](assets/append.png)
+
 다음 코드를 플레이그라운드에 추가하여 이 연산자를 실험해보세요:
 ```
 example(of: "append(Output...)") {
@@ -292,7 +298,9 @@ publisher.send(completion: .finished)
 
 ### append(Sequence)
 이 append의 변형은 Sequence를 준수하는 모든 객체를 받아 원래 퍼블리셔의 모든 값이 방출된 후에 해당 값을 추가합니다.
+
 ![prepend_sequence](assets/prepend_sequence.png)
+
 다음 코드를 플레이그라운드에 추가하여 이 연산자를 실험해보세요:
 ```
 example(of: "append(Sequence)") {
@@ -330,7 +338,9 @@ example(of: "append(Sequence)") {
 
 ### append(Publisher)
 append 연산자 그룹의 마지막 멤버는 Publisher를 받아 원래 퍼블리셔가 완료된 후 해당 퍼블리셔가 방출하는 값을 끝에 추가합니다.
+
 ![append_publisher](assets/append_publisher.png)
+
 이 예제를 시도하려면, 다음 코드를 플레이그라운드에 추가하세요:
 ```
 example(of: "append(Publisher)") {
@@ -366,7 +376,9 @@ example(of: "append(Publisher)") {
 이 섹션에서는 Combine에서 가장 복잡한 결합 연산자 중 하나인 switchToLatest를 다룹니다.
 농담이 아니고, switchToLatest는 복잡하지만 매우 유용합니다. 이는 대기 중인 퍼블리셔 구독을 취소하면서 최신 퍼블리셔 구독으로 전환할 수 있게 해줍니다.
 이 연산자는 퍼블리셔 자체가 퍼블리셔를 방출할 때만 사용할 수 있습니다.
+
 ![switchToLatest](assets/switchToLatest.png)
+
 다음 코드를 플레이그라운드에 추가하여 switchToLatest 예제를 실험해보세요:
 ```
 example(of: "switchToLatest") {
@@ -506,7 +518,9 @@ image: receive finished
 ### merge(with:)
 이 장의 끝에 도달하기 전에, 다른 퍼블리셔의 방출을 결합하는 세 가지 연산자로 마무리할 것입니다. 먼저 merge(with:)부터 시작합니다.
 이 연산자는 동일한 유형의 여러 퍼블리셔에서 방출된 값을 번갈아가며 **인터리브(interleave)**합니다.
+
 ![merge_with](assets/merge_with.png)
+
 이 예제를 시도하려면, 다음 코드를 플레이그라운드에 추가하세요:
 ```
 example(of: "merge(with:)") {
@@ -551,7 +565,9 @@ Completed
 combineLatest는 서로 다른 퍼블리셔를 결합할 수 있는 또 다른 연산자입니다. 이는 서로 다른 값 유형의 퍼블리셔를 결합할 수 있게 해주며, 매우 유용할 수 있습니다. 그러나 모든 퍼블리셔의 방출을 번갈아가며 인터리브하는 대신, 퍼블리셔 중 하나가 값을 방출할 때마다 모든 퍼블리셔의 최신 값을 튜플로 방출합니다.
 
 단, 원본 퍼블리셔와 combineLatest에 전달된 모든 퍼블리셔는 combineLatest가 아무것도 방출하기 전에 적어도 하나의 값을 방출해야 합니다.
+
 ![combineLatest](assets/combineLatest.png)
+
 이 연산자를 시도해보려면, 다음 코드를 플레이그라운드에 추가하세요:
 ```
 example(of: "combineLatest") {
@@ -598,7 +614,9 @@ publisher1에서 방출된 1이 combineLatest를 통해 전달되지 않는 것�
 이 연산자는 유사하게 작동하여 동일한 인덱스의 쌍을 이루는 값의 튜플을 방출합니다. 각 퍼블리셔가 항목을 방출할 때까지 기다렸다가, 현재 인덱스에서 모든 퍼블리셔가 값을 방출한 후에 단일 항목 튜플을 방출합니다.
 
 이는 두 개의 퍼블리셔를 zipping할 경우, 두 퍼블리셔가 값을 방출할 때마다 단일 튜플이 방출된다는 의미입니다.
+
 ![zip](assets/zip.png)
+
 다음 코드를 플레이그라운드에 추가하여 이 예제를 시도해보세요:
 ```
 example(of: "zip") {
@@ -653,20 +671,3 @@ Completed
 이번 장은 꽤 길었지만, Combine이 제공하는 가장 유용하고 복잡한 연산자들을 포함하고 있습니다. 여기까지 온 것에 대해 칭찬합니다!
 이번에는 도전 과제가 없습니다. 지금까지 배운 모든 연산자를 실험해 보세요. 사용할 수 있는 다양한 사례가 많이 있습니다.
 다음 두 장에서 배울 연산자 그룹은 "시간 조작 연산자"와 "시퀀스 연산자"입니다. 다음 장으로 넘어가세요!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```
-```
